@@ -1,0 +1,54 @@
+<!-- app.component.html --><H1>Registration Form</H1>
+<form (ngSubmit)="submitForm()" #registrationForm="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="Name" name="name" [(ngModel)]="formData.name" required>
+  </mat-form-field>
+
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let person of formData.responsiblePersons"
+              [removable]="true"
+              (removed)="removeResponsiblePerson(person)">
+      {{ person.name }}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="Responsible Person" #personInput
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="true"
+           (matChipInputTokenEnd)="addResponsiblePerson(personInput)">
+  </mat-chip-list>
+
+  <mat-form-field>
+    <input matInput placeholder="EPF No" name="epfNo" [(ngModel)]="formData.epfNo" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Section</mat-label>
+    <mat-select name="section" [(ngModel)]="formData.section" required>
+      <mat-option value="IT">IT</mat-option>
+      <mat-option value="HR">HR</mat-option>
+      <mat-option value="Finance">Finance</mat-option>
+      <mat-option value="Production">Production</mat-option>
+      <mat-option value="Manufacturing">Manufacturing</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-radio-group name="gender" [(ngModel)]="formData.gender" required>
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+    </mat-radio-group>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Date of Birth" name="dob"
+           [(ngModel)]="formData.dateOfBirth" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary" [disabled]="registrationForm.invalid">
+    Register
+  </button>
+</form>

@@ -1,0 +1,46 @@
+<div class="home-container">
+  <h1>Welcome to the Home Page</h1>
+  <button mat-raised-button color="primary" routerLink="/register">Add User</button>
+  <div class="dropdown-container" #dropdownContainer>
+    <mat-form-field>
+      <mat-label>Section</mat-label>
+      <mat-select *ngIf="isMultiple; else singleSelect" multiple>
+        <mat-option *ngFor="let section of sections" [value]="section">{{ section }}</mat-option>
+      </mat-select>
+      <ng-template #singleSelect>
+        <mat-select (click)="toggleDropdown()">
+          <mat-option *ngFor="let section of sections" [value]="section">{{ section }}</mat-option>
+        </mat-select>
+      </ng-template>
+    </mat-form-field>
+  </div>
+
+  <div class="table-container">
+    <table class="simple-table">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Employee Name</th>
+          <th>EPF Number</th>
+          <th>Edit/Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataSource.filteredData">
+          <td>{{ data.employeeId }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.__v }}</td>
+          <button mat-icon-button color="primary" (click)="editEmployee(data)">
+            <mat-icon class="action-icons">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="removeEmployee(data)">
+            <mat-icon class="action-icons">delete</mat-icon>
+          </button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
