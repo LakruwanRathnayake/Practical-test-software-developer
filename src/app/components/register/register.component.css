@@ -1,0 +1,52 @@
+/* Add this CSS to your component's CSS file */
+form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-chip-list {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+mat-radio-button {
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+}
+
+/* Optional: Styling for chips */
+mat-chip {
+  background-color: #e0e0e0;
+  margin-right: 5px;
+}
+
+/* Optional: Styling for selected chips */
+mat-chip.mat-chip-selected {
+  background-color: #1976d2;
+  color: #ffffff;
+}
+
+/* Optional: Styling for chip remove icon */
+mat-icon.mat-chip-remove {
+  color: #888;
+  cursor: pointer;
+}
+
+/* Optional: Styling for date picker toggle */
+.mat-datepicker-toggle {
+  color: #1976d2;
+  cursor: pointer;
+}
